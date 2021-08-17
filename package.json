@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js",
+    "start": "node src/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "discord-akairo": "discord-akairo/discord-akairo",
+    "discord.js": "^13.1.0",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}
