@@ -2,7 +2,7 @@
   "scripts": {
     "watch": "tsc -w",
     "dev": "nodemon dist/index.js",
-    "start": "node src/index.js",
+    "start": "tsc && node dist/index.js",
     "build": "tsc"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "mongoose": "^5.13.7"
   },
   "devDependencies": {
+    "@types/node": "^16.6.1",
     "typescript": "^4.3.5"
   }
 }
