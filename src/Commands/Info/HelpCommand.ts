@@ -10,7 +10,8 @@ export default class HelpCommand extends CMD {
                     id: 'command',
                     type: 'commandAliases'
                 }
-            ]
+            ],
+            description: "Help cmd"
         })
     }
 
