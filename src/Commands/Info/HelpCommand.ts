@@ -1,8 +1,7 @@
-import Command from "../../Struct/Command";
-import { Argument } from "discord-akairo" 
-import Client from "../../Struct/Client"
+import CMD from "../../Struct/Command"
+import { Argument,Command} from "discord-akairo" 
 import { Message,Collection } from "discord.js" 
-export default class HelpCommand extends Command {
+export default class HelpCommand extends CMD {
     constructor() {
         super('help', {
             aliases: ['help',],
@@ -16,7 +15,7 @@ export default class HelpCommand extends Command {
     }
 
     exec(message: Message, args: Argument) {
-            const client = (this.client as Client)
+            const { client } = this
             const { prefix,modules: commands } = client.commandHandler
             try {
                 const data = [];
@@ -54,7 +53,7 @@ export default class HelpCommand extends Command {
           
                 if (!args.command) {
                   embed
-                    .setAuthor(`Shiba Command List`, message.author.displayAvatarURL())
+                    .setAuthor(`Jorge Command List`, message.author.displayAvatarURL())
                     .setDescription(lines.join("\n"))
                     .setThumbnail(client.user?.displayAvatarURL() as string)
                     .setFooter(
@@ -83,7 +82,7 @@ export default class HelpCommand extends Command {
                 if (command.userPermissions)
                   data.push(`**Permissions:** ${command.userPermissions}`);
 
-                embed.setAuthor(`Shiba Help Menu`);
+                embed.setAuthor(`Jorge Help Menu`);
                 embed.setDescription(data.join("\n"));
                 embed
                   .setFooter(`Syntax: [] = required, {} = optional.`)

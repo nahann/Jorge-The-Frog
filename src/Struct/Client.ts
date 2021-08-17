@@ -23,7 +23,7 @@ export default class Client extends AkairoClient {
         }, {
             intents: 32767,
             allowedMentions: {
-                parse: ['everyone', 'roles', 'users'],
+                parse: ['roles', 'users'],
                 repliedUser: false
             }
         })
