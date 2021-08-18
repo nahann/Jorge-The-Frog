@@ -6,6 +6,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "consola": "^2.15.3",
     "discord-akairo": "discord-akairo/discord-akairo",
     "discord.js": "^13.1.0",
     "mongoose": "^5.13.7",

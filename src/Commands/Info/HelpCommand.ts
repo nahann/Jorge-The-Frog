@@ -1,6 +1,6 @@
 import CMD from "../../Struct/Command"
-import { Argument,Command} from "discord-akairo" 
-import { Message,Collection } from "discord.js" 
+import { Command } from "discord-akairo" 
+import { Message,MessageActionRow,MessageSelectMenu } from "discord.js" 
 export default class HelpCommand extends CMD {
     constructor() {
         super('help', {
@@ -15,24 +15,11 @@ export default class HelpCommand extends CMD {
         })
     }
 
-    exec(message: Message, args: Argument) {
+    async exec(message: Message, { command } : { command?: Command}) {
             const { client } = this
-            const { prefix,modules: commands } = client.commandHandler
-            try {
+            const { prefix, categories } = client.commandHandler
                 const data = [];
                 const embed = client.embed({},message)
-                const categories: Collection<string,Collection<string,Command>> = new Collection();
-                commands.forEach((command) => {
-                  const category = categories.get(command.category.id);
-                  if (category) {
-                    category.set(command.aliases[0], command);
-                  } else {
-                    categories.set(
-                      command.category.id,
-                      (new Collection().set(command.aliases[0], command) as Collection<string,Command>)
-                    );
-                  }
-                });
           
                 const dirEmojis = {
                   Developer: "<:dev:854466327976345602>",
@@ -45,39 +32,49 @@ export default class HelpCommand extends CMD {
                   Music: "<:music:855134047205720104>",
                   Leveling: "<:rocket:856565446878560276>",
                 };
-                const lines = categories.map(
-                  (category, name) =>
-                    `${dirEmojis[name as keyof typeof dirEmojis]} **${name}: **  ${category
-                      .map((command) => `\`${command.aliases[0]}\``)
-                      .join(", ")}`
-                );
           
-                if (!args.command) {
-                  embed
+                if (!command) {
+
+                   const menu = new MessageSelectMenu().setCustomId("helpmenu")
+                   categories.map(cat => menu.addOptions({
+                     label: cat.id,
+                     value: cat.id
+                   }))
+                   const row = new MessageActionRow().addComponents(menu)
+                    embed
                     .setAuthor(`Jorge Command List`, message.author.displayAvatarURL())
-                    .setDescription(lines.join("\n"))
-                    .setThumbnail(client.user?.displayAvatarURL() as string)
+                    .setDescription(`Choose a category in the select menu. Note that this only works for 30 seconds.\nOptions:\n ${categories.map( cat => `${dirEmojis[cat.id as keyof typeof dirEmojis]} ${cat.id}` ).join("\n")}`)
                     .setFooter(
                       `You can send \`${prefix[Math.floor(Math.random() * prefix.length) as keyof typeof prefix]}help [command name]\` to get info on a specific command!`
                     )
-                    .setColor("RANDOM");
-                  return message.reply({
+                  const msg = await message.reply({
                     embeds: [embed],
-                    allowedMentions: { repliedUser: false },
+                    components: [row]
                   });
-                }
-
-                const command = args.command
-          
-                if (!command) {
-                  return message.reply("that's not a valid command!");
+                  const collector = await msg.createMessageComponentCollector({ time: 30000, filter: (interaction) => interaction.user.id == message.author.id,componentType: "SELECT_MENU" })
+                  collector.on("collect",(interaction) =>{
+                    if(!interaction.isSelectMenu()) return
+                    interaction.reply({ content: "Success", ephemeral: true})
+                    const category = categories.get(interaction.values[0])
+                    embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
+                    msg.edit({
+                      embeds: [embed],
+                      components: [row]
+                    })
+                  })
+                  collector.on("end",(collected)=>{
+                    embed.setFooter("Expired")
+                    msg.edit({
+                      embeds: [embed],
+                      components: [new MessageActionRow({ components: row.components.map(c => c.setDisabled()) })]
+                    })
+                  })
+                  return
                 }
           
                 data.push(`**Name:** ${command.aliases[0]}`);
-                // const oldpemrs = `${command.userPermissions.slice(0, 1).toUpperCase() + command.userPermissions.substring(1).toLowerCase()}`
-                // const newpemrs = oldpemrs.replace("_", " ")
                 if (command.aliases)
-                  data.push(`**Aliases:** ${command.aliases.join(", ")}`);
+                  data.push(`**Aliases:** ${command.aliases.slice(1).join(", ")}`);
                 if (command.description)
                   data.push(`**Description:** ${command.description}`);
                 if (command.userPermissions)
@@ -87,20 +84,8 @@ export default class HelpCommand extends CMD {
                 embed.setDescription(data.join("\n"));
                 embed
                   .setFooter(`Syntax: [] = required, {} = optional.`)
-                  .setColor("RANDOM");
                 message.reply({
                   embeds: [embed],
-                  allowedMentions: { repliedUser: false },
                 });
-              } catch (e) {
-                message.reply({
-                  embeds: [
-                    client.embed(
-                      { title: "Error Caught!", description: `${e}` },
-                      message
-                    ),
-                  ],
-                });
-              }
         }
     }

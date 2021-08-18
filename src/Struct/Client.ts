@@ -3,6 +3,7 @@ import { embed } from '../Functions/Embed'
 import { EmbedFunction } from '../../types'
 import * as path from "path"
 import { Config } from "../Config"
+import consola,{Consola} from "consola"
 export default class Client extends AkairoClient {
     commandHandler: CommandHandler = new CommandHandler(this, {
         directory: path.join(__dirname,"..","Commands"),
@@ -14,8 +15,10 @@ export default class Client extends AkairoClient {
         ignoreCooldown: ['243845797643419658', '520797108257816586', '705843647287132200']
     });
     listenerHandler: ListenerHandler = new ListenerHandler(this, {
-        directory: path.join(__dirname,"..","Listeners")
+        directory: path.join(__dirname,"..","Listeners"),
+        automateCategories: true
     });
+    console: Consola
     //inhibitorHandler: InhibitorHandler;
     embed: EmbedFunction
     config: any
@@ -31,20 +34,25 @@ export default class Client extends AkairoClient {
         })
         this.config = Config
         this.commandHandler.useListenerHandler(this.listenerHandler)
+        this.console = consola
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler
         })
-        this.listenerHandler.loadAll()
 /*
         this.inhibitorHandler = new InhibitorHandler(this, {
             directory: '../Inhibitors'
         })
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler)
-        this.inhibitorHandler.loadAll()
+        
 */
 
-        this.commandHandler.loadAll()
         this.embed = embed;
+    }
+    start(){
+        this.commandHandler.loadAll()
+        this.listenerHandler.loadAll()
+        //this.inhibitorHandler.loadAll()
+        this.login(this.config.Token)
     }
 }
