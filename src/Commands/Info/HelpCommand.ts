@@ -57,7 +57,7 @@ export default class HelpCommand extends CMD {
                   const collector = await msg.createMessageComponentCollector({ time: 30000, filter: (interaction) => interaction.user.id == message.author.id,componentType: "SELECT_MENU" })
                   collector.on("collect",(interaction) =>{
                     if(!interaction.isSelectMenu()) return
-                    interaction.reply({ content: "Success", ephemeral: true})
+                    interaction.deferReply()
                     if(interaction.values[0] !== "main"){
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
