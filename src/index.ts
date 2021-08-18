@@ -1,4 +1,3 @@
-import { Config } from "./Config";
 import Client from "./Struct/Client";
 const client = new Client()
-client.login(Config.Token)
+client.login(client.config.Token)

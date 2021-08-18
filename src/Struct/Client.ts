@@ -2,6 +2,7 @@ import { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } from 
 import { embed } from '../Functions/Embed'
 import { EmbedFunction } from '../../types'
 import * as path from "path"
+import { Config } from "../Config"
 export default class Client extends AkairoClient {
     commandHandler: CommandHandler = new CommandHandler(this, {
         directory: path.join(__dirname,"..","Commands"),
@@ -17,6 +18,7 @@ export default class Client extends AkairoClient {
     });
     //inhibitorHandler: InhibitorHandler;
     embed: EmbedFunction
+    config: any
     constructor() {
         super({
             ownerID: ['243845797643419658', '520797108257816586']
@@ -27,6 +29,7 @@ export default class Client extends AkairoClient {
                 repliedUser: false
             }
         })
+        this.config = Config
         this.commandHandler.useListenerHandler(this.listenerHandler)
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
