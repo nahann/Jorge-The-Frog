@@ -35,7 +35,10 @@ export default class HelpCommand extends CMD {
           
                 if (!command) {
 
-                   const menu = new MessageSelectMenu().setCustomId("helpmenu")
+                   const menu = new MessageSelectMenu().setCustomId("helpmenu").addOptions({
+                     label: "Main",
+                     value: "main"
+                   })
                    categories.map(cat => menu.addOptions({
                      label: cat.id,
                      value: cat.id
@@ -55,8 +58,17 @@ export default class HelpCommand extends CMD {
                   collector.on("collect",(interaction) =>{
                     if(!interaction.isSelectMenu()) return
                     interaction.reply({ content: "Success", ephemeral: true})
+                    if(interaction.values[0] !== "main"){
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
+                    }else{
+                      embed.setDescription(categories.map(
+                        (category, name) =>
+                          `${dirEmojis[name as keyof typeof dirEmojis]} **${name}: **  ${category
+                            .map((command) => `\`${command.aliases[0]}\``)
+                            .join(", ")}`
+                      ).join("\n"))
+                    }
                     msg.edit({
                       embeds: [embed],
                       components: [row]
