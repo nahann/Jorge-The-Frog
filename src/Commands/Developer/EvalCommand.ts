@@ -10,6 +10,7 @@ export default class EvalCommand extends Command{
             args: [{
                 id: "code",
                 type: "string",
+                match: "rest",
                 default: "client.user.username"
             }]
         })
