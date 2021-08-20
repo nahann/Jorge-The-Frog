@@ -24,13 +24,10 @@ export default class HelpCommand extends CMD {
                 const dirEmojis = {
                   Developer: "<:dev:854466327976345602>",
                   Fun: "<:fun:854470205978443789>",
-                  "Guild Config": "<:config:854469436306882592>",
                   Info: "<:info:854469078433792020>",
                   Moderation: "<:mod:854469924088446996>",
                   Userinfo: "<:users:854458687547899934>",
-                  Economy: "<:ec:854466932551450644>",
-                  Music: "<:music:855134047205720104>",
-                  Leveling: "<:rocket:856565446878560276>",
+                  Economy: "<:ec:854466932551450644>"
                 };
           
                 if (!command) {

@@ -20,7 +20,7 @@ export default class EvalCommand extends Command{
         .replace(new RegExp("client.token","g"),"()")
         .replace(/”/g, '"')
         .replace(/“/g, '"')
-        const evaled = Util.splitMessage(inspect(eval(code),{depth: 0}))[0]
+        const evaled = Util.splitMessage(inspect(eval(cd),{depth: 0}))[0]
         message.reply({ embeds: [client.embed({title: "Eval success",description: `\`\`\`\n${evaled}\`\`\``},message)]})
     }
 }

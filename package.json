@@ -9,6 +9,8 @@
     "consola": "^2.15.3",
     "discord-akairo": "discord-akairo/discord-akairo",
     "discord.js": "^13.1.0",
+    "imageapi.js": "^1.7.0",
+    "javascript-obfuscator": "^2.19.0",
     "mongoose": "^5.13.7",
     "ms": "^2.1.3",
     "node-fetch": "^2.6.1"
