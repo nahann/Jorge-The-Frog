@@ -8,7 +8,7 @@ export default class HelpCommand extends CMD {
             args: [
                 {
                     id: 'command',
-                    type: 'commandAliases'
+                    type: 'commandAlias'
                 }
             ],
             description: "Help cmd"

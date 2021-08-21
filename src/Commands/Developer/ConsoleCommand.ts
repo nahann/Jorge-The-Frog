@@ -1,7 +1,7 @@
 import { Message, Util } from "discord.js";
 import Command from "../../Struct/Command";
 import { exec } from "child_process"
-export default class EvalCommand extends Command{
+export default class ConsoleCommand extends Command{
     constructor(){
         super("console",{
             aliases:["console","shell"],
