@@ -21,8 +21,8 @@ export default class DepCommand extends ExCommand{
       const data =
         (await Schema.findOne({ userId: message.author.id }) ||
         await Schema.create({ userId: message.author.id })) as any
-      const walletToken = data["walletShibaToken"];
-      const bankToken = data["bankShibaToken"];
+      const walletToken = data["walletJorgeToken"];
+      const bankToken = data["bankJorgeToken"];
       if (num > walletToken)
         return message.reply({
           embeds: [
@@ -34,12 +34,12 @@ export default class DepCommand extends ExCommand{
         });
       Schema.increment(
         { userId: message.author.id },
-        "bankShibaToken",
+        "bankJorgeToken",
         num
       );
       Schema.decrement(
         { userId: message.author.id },
-        "walletShibaToken",
+        "walletJorgeToken",
         num
       );
       message.reply({

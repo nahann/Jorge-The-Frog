@@ -13,7 +13,7 @@ export default class BotInfoCommand extends Command{
         let memberc = 0;
         client.guilds.cache.forEach((guild) => (memberc += guild.memberCount));
         const embed = client.embed({},message)
-          .setAuthor(`Shiba Bot Info`, client.user?.displayAvatarURL())
+          .setAuthor(`Jorge Bot Info`, client.user?.displayAvatarURL())
           .addFields(
             {
               name: `Tag <:tag:854460951805296640>`,

@@ -9,7 +9,7 @@ export default class LeaderBoardCommand extends ExCommand{
     async exec(message: Message){
         const Schema = await this.client.db.load("userEcos");
         const leaderboard = await Schema.leaderboard(
-          (a: any, b: any) => b.walletShibaToken - a.walletShibaToken
+          (a: any, b: any) => b.walletJorgeToken - a.walletJorgeToken
         );
         return message.reply({
           embeds: [
@@ -22,10 +22,10 @@ export default class LeaderBoardCommand extends ExCommand{
                       "This displays the users with the most money in their wallets.",
                   },
                 ],
-                title: `Shiba Economy Leaderboard`,
+                title: `Jorge Economy Leaderboard`,
                 description: leaderboard
                   .map((value: any, index) => {
-                    return `:coin: ${value.walletShibaToken} Shiba Token - ${
+                    return `:coin: ${value.walletJorgeToken} Jorge Token - ${
                       this.client.users.cache.get(value?.userId)?.tag || "Unknown User"
                     }`;
                   })

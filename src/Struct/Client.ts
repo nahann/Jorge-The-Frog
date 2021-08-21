@@ -42,11 +42,11 @@ export default class Client extends AkairoClient {
                 name: "userEcos",
                 data: {
                   userId: String,
-                  walletShibaToken: {
+                  walletJorgeToken: {
                     type: Number,
                     default: 500,
                   },
-                  bankShibaToken: {
+                  bankJorgeToken: {
                     type: Number,
                     default: 0,
                   },
