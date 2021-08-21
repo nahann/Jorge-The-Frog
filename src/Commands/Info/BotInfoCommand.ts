@@ -4,7 +4,7 @@ import ms from "ms"
 export default class BotInfoCommand extends Command{
     constructor(){
         super("botinfo",{
-            aliases: ["botinfo"],
+            aliases: ["botinfo","ping"],
             description: "Get the information about the bot"
         })
     }

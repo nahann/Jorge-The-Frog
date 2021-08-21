@@ -26,7 +26,6 @@ export default class HelpCommand extends CMD {
                   Fun: "<:fun:854470205978443789>",
                   Info: "<:info:854469078433792020>",
                   Moderation: "<:mod:854469924088446996>",
-                  Userinfo: "<:users:854458687547899934>",
                   Economy: "<:ec:854466932551450644>"
                 };
           
@@ -54,7 +53,7 @@ export default class HelpCommand extends CMD {
                   const collector = await msg.createMessageComponentCollector({ time: 30000, filter: (interaction) => interaction.user.id == message.author.id,componentType: "SELECT_MENU" })
                   collector.on("collect",(interaction) =>{
                     if(!interaction.isSelectMenu()) return
-                    interaction.deferReply()
+                    interaction.deferReply({ ephemeral: true })
                     if(interaction.values[0] !== "main"){
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)

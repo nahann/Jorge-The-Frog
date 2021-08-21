@@ -55,4 +55,10 @@ export default class Client extends AkairoClient {
         //this.inhibitorHandler.loadAll()
         this.login(this.config.Token)
     }
+    trimArray(ar: any[],num: number,join = ", "){
+        const l = ar.length - num
+        const sliced = ar.slice(0,num).join(join)
+        console.log(sliced)
+        return ar.length > num ? `${sliced} ${join == "\n" ? "\n" : ""}...and ${l} more` : ar.join(join)
+       } 
 }
