@@ -11,7 +11,8 @@ export default class DocsCommand extends ExCommand{
                 type: "string"
             },{
                 id: "source",
-                type: "string",
+                type: "option",
+                flag: "--src=",
                 default: "stable"
             }]
         })
