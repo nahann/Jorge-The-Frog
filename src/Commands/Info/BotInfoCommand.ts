@@ -4,7 +4,7 @@ import ms from "ms"
 export default class BotInfoCommand extends Command{
     constructor(){
         super("botinfo",{
-            aliases: ["botinfo","ping"],
+            aliases: ["bot-info","ping","info"],
             description: "Get the information about the bot"
         })
     }
@@ -66,7 +66,7 @@ export default class BotInfoCommand extends Command{
             .setEmoji("<:invite:854951126025240586>"),
           new MessageButton()
             .setLabel("GitHub Repository")
-            .setURL("https://github.com/nahann/Jorge")
+            .setURL("https://github.com/nahann/Jorge-The-Frog")
             .setStyle("LINK")
             .setEmoji("<:github:854957408585515019>"),
          new MessageButton()

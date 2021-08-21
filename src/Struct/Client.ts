@@ -12,6 +12,7 @@ export default class Client extends AkairoClient {
         automateCategories: true,
         handleEdits: true,
         commandUtil: true,
+        aliasReplacement: /-/g,
         defaultCooldown: 3000,
         ignoreCooldown: ['243845797643419658', '520797108257816586', '705843647287132200']
     });
