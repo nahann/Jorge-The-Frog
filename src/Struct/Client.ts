@@ -2,6 +2,7 @@ import { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } from 
 import { embed } from '../Functions/Embed'
 import { EmbedFunction } from '../../types'
 import * as path from "path"
+import { Database } from "zapmongo"
 import { Config } from "../Config"
 import consola,{Consola} from "consola"
 export default class Client extends AkairoClient {
@@ -19,6 +20,7 @@ export default class Client extends AkairoClient {
         automateCategories: true
     });
     console: Consola
+    db: Database 
     //inhibitorHandler: InhibitorHandler;
     embed: EmbedFunction
     config: any
@@ -33,6 +35,27 @@ export default class Client extends AkairoClient {
             }
         })
         this.config = Config
+        this.db = new Database({
+            mongoURI: this.config.Mongo as string,
+            schemas: [{
+                name: "userEcos",
+                data: {
+                  userId: String,
+                  walletShibaToken: {
+                    type: Number,
+                    default: 500,
+                  },
+                  bankShibaToken: {
+                    type: Number,
+                    default: 0,
+                  },
+                  Passive: {
+                    type: Boolean,
+                    default: false,
+                  },
+                },
+              }]
+        })
         this.commandHandler.useListenerHandler(this.listenerHandler)
         this.console = consola
         this.listenerHandler.setEmitters({
