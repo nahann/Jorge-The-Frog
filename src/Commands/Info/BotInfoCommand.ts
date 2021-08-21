@@ -66,7 +66,7 @@ export default class BotInfoCommand extends Command{
             .setEmoji("<:invite:854951126025240586>"),
           new MessageButton()
             .setLabel("GitHub Repository")
-            .setURL("https://github.com/nahann/Shiba")
+            .setURL("https://github.com/nahann/Jorge")
             .setStyle("LINK")
             .setEmoji("<:github:854957408585515019>"),
          new MessageButton()
