@@ -11,7 +11,7 @@ export default class EvalCommand extends Command{
     }
     exec(message: Message){
         exec("cd /root/Jorge && git pull && pm2 restart 0",(stdout,error)=>{
-            message.util.reply({
+            message.util?.reply({
                 embeds:[
                     this.client.embed({
                         description: `Output: \`\`\`\n${stdout || error}\`\`\``

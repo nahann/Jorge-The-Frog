@@ -76,7 +76,7 @@ export default class BotInfoCommand extends Command{
             .setEmoji("<:rocket:856565446878560276>")
         );
     
-        message.util.reply({
+        message.util?.reply({
           embeds: [embed],
           components: [buttons],
           allowedMentions: { repliedUser: false },

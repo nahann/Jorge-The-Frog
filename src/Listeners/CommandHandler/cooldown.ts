@@ -11,7 +11,7 @@ export default class CooldownEvent extends Listener{
     }
 
     exec(message: Message,command: Command,remaining: number) {
-        return message.util.reply({
+        return message.util?.reply({
             embeds: [
                 this.client.embed({
                     title: `P A T I E N C E `,

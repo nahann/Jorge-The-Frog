@@ -22,6 +22,6 @@ export default class DocsCommand extends ExCommand{
         if(!["stable","master","akairo","akairo-master"]) return
         const src = source == "akairo" ? "akairo-master" : source
         const fetched = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json()
-        message.util.reply({ embeds: [fetched] })
+        message.util?.reply({ embeds: [fetched] })
     }
 }

@@ -12,7 +12,7 @@ export default class WithDrawCommand extends ExCommand{
     }
     async exec(message: Message,{num}:{num: number}){
         if (isNaN(num))
-        return message.util.reply({
+        return message.util?.reply({
           embeds: [
             this.client.embed({ description: `Provide a real number.` }, message),
           ],
@@ -24,7 +24,7 @@ export default class WithDrawCommand extends ExCommand{
       const walletToken = data["walletJorgeToken"];
       const bankToken = data["bankJorgeToken"];
       if (num > bankToken)
-        return message.util.reply({
+        return message.util?.reply({
           embeds: [
             this.client.embed(
               {
@@ -40,7 +40,7 @@ export default class WithDrawCommand extends ExCommand{
         "walletJorgeToken",
         num
       );
-      message.util.reply({
+      message.util?.reply({
         embeds: [
           this.client.embed(
             {

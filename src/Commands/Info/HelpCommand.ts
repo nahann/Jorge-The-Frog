@@ -46,7 +46,7 @@ export default class HelpCommand extends CMD {
                     .setFooter(
                       `You can send \`${prefix[Math.floor(Math.random() * prefix.length) as keyof typeof prefix]}help [command name]\` to get info on a specific command!`
                     )
-                  const msg = await message.util.reply({
+                  const msg = await message.util?.reply({
                     embeds: [embed],
                     components: [row]
                   });
@@ -92,7 +92,7 @@ export default class HelpCommand extends CMD {
                 embed.setDescription(data.join("\n"));
                 embed
                   .setFooter(`Syntax: [] = required, {} = optional.`)
-                message.util.reply({
+                message.util?.reply({
                   embeds: [embed],
                 });
         }

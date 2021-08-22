@@ -12,7 +12,7 @@ export default class BegCommand extends ExCommand{
           (await schema.create({ userId: message.author.id }));
         const tokens = Math.floor(Math.random() * 25);
         schema.increment({ userId: message.author.id }, "walletJorgeToken", tokens);
-        message.util.reply({
+        message.util?.reply({
           embeds: [
             this.client.embed(
               { description: `You begged and got ${tokens} Jorge Token` },

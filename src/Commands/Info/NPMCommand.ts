@@ -17,7 +17,7 @@ export default class NPMCommand extends ExCommand{
     async exec(message: Message,{ query }: {query: string}){
         const fetched = await (await fetch(`https://api.npms.io/v2/search?q=${query}`)).json() as Npm
         const { package: pkg } = fetched.results[0]
-        message.util.reply({
+        message.util?.reply({
             embeds:[
                 this.client.embed({
                     title: pkg.name,

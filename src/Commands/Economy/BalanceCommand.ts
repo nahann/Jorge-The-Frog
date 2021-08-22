@@ -18,7 +18,7 @@ export default class BalanceCommand extends ExCommand{
           await Schema.create({ userId: user.id })) as any
         const walletToken = data.walletJorgeToken
         const bankToken = data.bankJorgeToken
-        message.util.reply({
+        message.util?.reply({
           embeds: [
             this.client.embed(
               {
