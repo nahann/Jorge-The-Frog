@@ -1,4 +1,4 @@
-import { NewsChannel,Message } from "discord.js";
+import { Message } from "discord.js";
 import Listener from "../../Struct/Listener";
 export default class MessageCreateEvent extends Listener{
     constructor() {
