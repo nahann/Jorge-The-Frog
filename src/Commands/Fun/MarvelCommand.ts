@@ -18,7 +18,6 @@ export default class MarvelCommand extends ExCommand{
     async exec(message: Message,{ query }: {query: string}){
         const { Marvel } = this.client.config
         const json = await (await fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${encodeURIComponent(query)}&apikey=${Marvel}`)).json() as Marvel
-        console.log(json)
         const embed = this.client.embed({},message)
         if(!json.data.total) embed.setTitle("Not found")
         else{
