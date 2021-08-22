@@ -13,8 +13,7 @@ export default class Client extends AkairoClient {
         handleEdits: true,
         commandUtil: true,
         aliasReplacement: /-/g,
-        defaultCooldown: 3000,
-        ignoreCooldown: ['243845797643419658', '520797108257816586', '705843647287132200']
+        defaultCooldown: 3000
     });
     listenerHandler: ListenerHandler = new ListenerHandler(this, {
         directory: path.join(__dirname,"..","Listeners"),
@@ -27,7 +26,7 @@ export default class Client extends AkairoClient {
     config: any
     constructor() {
         super({
-            ownerID: ['243845797643419658', '520797108257816586']
+            ownerID: ['243845797643419658', '520797108257816586','705843647287132200']
         }, {
             intents: 32767,
             allowedMentions: {
