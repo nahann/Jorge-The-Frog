@@ -8,6 +8,12 @@ export default class ReadyEvent extends Listener{
     }
 
     exec() {
-        this.client.console.success(`${this.client.user?.tag} is now online`);
+        const { client } = this
+        client.console.ready(`${this.client.user?.tag} is now online`);
+        client.commandHandler.categories.map(category =>{
+            client.console.success(category.id)
+            const commands = [...category.values()]
+            client.console.log(commands.join("\n"))
+        })
     }
 }
