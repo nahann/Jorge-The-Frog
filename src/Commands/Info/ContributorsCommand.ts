@@ -1,6 +1,7 @@
 import ExCommand from "../../Struct/Command";
-import { Message } from "discord.js"
+import { Message,EmbedFieldData } from "discord.js"
 import fetch from "node-fetch"
+import { GithubUser } from "../../interfaces/github";
 export default class ContributorsCommand extends ExCommand{
     constructor(){
         super("contributors",{
@@ -17,15 +18,14 @@ export default class ContributorsCommand extends ExCommand{
                 Authorization: `token ${config.PAT}`,
               },
             })
-          ).json();
-        console.log(JSON.stringify(json))
+          ).json() as GithubUser[];
         const contributors = json.map(
-            (contributor: any) =>
+            (contributor: GithubUser) =>
               new Object({
                 name: contributor.login,
                 value: `[Click me to visit their GitHub](${contributor.html_url})`,
                 inline: true,
-              })
+              }) as EmbedFieldData
           );
       
           const embed = this.client.embed({title: "All the contributors that are helping make Jorge awesome!",description:               "Be sure to drop a star on the repo, [here!](https://github.com/nahann/Jorge-The-Frog)"},message)
