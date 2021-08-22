@@ -10,7 +10,7 @@ export default class MemeCommand extends ExCommand{
     }
     async exec(message: Message){
         const { title, img: url} = await advanced("dankmemes","top")
-        message.reply({
+        message.util.reply({
             embeds:[
                 this.client.embed({
                     title,

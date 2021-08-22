@@ -18,7 +18,7 @@ export default class UserInfoCommand extends ExCommand{
        .sort((a, b) => b.position - a.position)
        .map((role) => role.toString())
        .slice(0, -1);
-        return message.reply({
+        return message.util.reply({
             embeds: [
                 this.client.embed({
                     author:{

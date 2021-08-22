@@ -31,6 +31,6 @@ export default class ContributorsCommand extends ExCommand{
           const embed = this.client.embed({title: "All the contributors that are helping make Jorge awesome!",description:               "Be sure to drop a star on the repo, [here!](https://github.com/nahann/Jorge-The-Frog)"},message)
             .addFields(contributors)
       
-          message.reply({ embeds: [embed] });
+          message.util.reply({ embeds: [embed] });
     }
 }

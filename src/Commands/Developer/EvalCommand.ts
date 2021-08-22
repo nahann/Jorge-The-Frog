@@ -22,6 +22,6 @@ export default class EvalCommand extends Command{
         .replace(/”/g, '"')
         .replace(/“/g, '"')
         const evaled = Util.splitMessage(inspect(eval(cd),{depth: 0}))[0]
-        message.reply({ embeds: [client.embed({title: "Eval success",description: `\`\`\`\n${evaled}\`\`\``},message)]})
+        message.util.reply({ embeds: [client.embed({title: "Eval success",description: `\`\`\`\n${evaled}\`\`\``},message)]})
     }
 }

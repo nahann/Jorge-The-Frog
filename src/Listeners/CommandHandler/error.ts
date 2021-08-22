@@ -11,7 +11,7 @@ export default class ErrorEvent extends Listener{
 
     exec(e: Error,message: Message,command: Command) {
         this.client.console.error(e)
-        return message.reply({
+        return message.util.reply({
             embeds: [
                 this.client.embed({
                     title: `Error occured while running command ${command.id || "unknown"}`,

@@ -17,7 +17,7 @@ export default class ConsoleCommand extends Command{
     }
     exec(message: Message,{ code }: { code: string }){
         exec(code,(stdout,error)=>{
-            message.reply({
+            message.util.reply({
                 embeds:[
                     this.client.embed({
                         description: `Output: \`\`\`\n${stdout || error}\`\`\``

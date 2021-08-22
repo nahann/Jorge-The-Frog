@@ -11,7 +11,7 @@ export default class LeaderBoardCommand extends ExCommand{
         const leaderboard = await Schema.leaderboard(
           (a: any, b: any) => b.walletJorgeToken - a.walletJorgeToken
         );
-        return message.reply({
+        return message.util.reply({
           embeds: [
             this.client.embed(
               {

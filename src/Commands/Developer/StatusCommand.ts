@@ -27,6 +27,6 @@ export default class StatusCommand extends Command{
         const types = ["PLAYING","WATCHING","STREAMING","LISTENING","COMPETING"]
         if(!types.includes(type)) return
         client.user?.setActivity(status,{ type: (type as ActivityType) })
-        message.reply({ embeds: [client.embed({title: "Success"},message)]})
+        message.util.reply({ embeds: [client.embed({title: "Success"},message)]})
     }
 }

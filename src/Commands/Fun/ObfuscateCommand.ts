@@ -15,7 +15,7 @@ export default class ObfuscateCommand extends ExCommand{
     }
     async exec(message: Message,{ code }: { code: string }){
         const obfuscation = obfuscate(code).getObfuscatedCode()
-        message.reply({
+        message.util.reply({
             embeds:[
                 this.client.embed({description: obfuscation.length > 2048 ? "too long xd" : `\`\`\`\n${obfuscation}\`\`\``},message)
             ]

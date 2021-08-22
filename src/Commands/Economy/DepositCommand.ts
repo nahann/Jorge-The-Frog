@@ -12,7 +12,7 @@ export default class DepCommand extends ExCommand{
     }
     async exec(message: Message,{ num }: { num: number}){
         if (isNaN(num))
-        return message.reply({
+        return message.util.reply({
           embeds: [
             this.client.embed({ description: `Provide a real number.` }, message),
           ],
@@ -24,7 +24,7 @@ export default class DepCommand extends ExCommand{
       const walletToken = data["walletJorgeToken"];
       const bankToken = data["bankJorgeToken"];
       if (num > walletToken)
-        return message.reply({
+        return message.util.reply({
           embeds: [
             this.client.embed(
               { description: `You don't have that much money in your wallet.` },
@@ -42,7 +42,7 @@ export default class DepCommand extends ExCommand{
         "walletJorgeToken",
         num
       );
-      message.reply({
+      message.util.reply({
         embeds: [
           this.client.embed(
             {
