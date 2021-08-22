@@ -49,7 +49,7 @@ export default class HelpCommand extends CMD {
                   const msg = await message.util?.reply({
                     embeds: [embed],
                     components: [row]
-                  });
+                  }) as Message;
                   const collector = await msg.createMessageComponentCollector({ time: 30000, filter: (interaction) => interaction.user.id == message.author.id,componentType: "SELECT_MENU" })
                   collector.on("collect",(interaction) =>{
                     if(!interaction.isSelectMenu()) return
