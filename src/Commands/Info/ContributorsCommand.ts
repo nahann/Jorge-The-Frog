@@ -18,7 +18,7 @@ export default class ContributorsCommand extends ExCommand{
               },
             })
           ).json();
-        console.log(json)
+        console.log(JSON.stringify(json))
         const contributors = json.map(
             (contributor: any) =>
               new Object({
