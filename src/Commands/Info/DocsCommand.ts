@@ -24,7 +24,7 @@ export default class DocsCommand extends ExCommand{
         const json = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json() as MessageEmbedOptions
         json.fields = json.fields?.map(field => new Object({ 
             name: field.name, 
-            value: Util.splitMessage(field.value,{ maxLength: 1024 })[0],
+            value: this.client.shorten(field.value,1024),
             inline: field.inline || "false"
         }) as EmbedFieldData)
         message.util?.reply({ embeds: [json] })
