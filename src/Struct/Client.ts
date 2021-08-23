@@ -80,8 +80,8 @@ export default class Client extends AkairoClient {
     }
     shorten(str: string, num: number){
         if(str.length < num) return str
-        const newst = str.slice(0,num - 3)
-        return `${newst}...`
+        const newst = str.slice(0,num - 2)
+        return `${newst}..`
     }
     trimArray(ar: any[],num: number,join = ", "){
         const l = ar.length - num
