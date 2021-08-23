@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { Message, MessageEmbedOptions,Util,EmbedFieldData } from "discord.js";
 import ExCommand from "../../Struct/Command";
 import fetch from "node-fetch"
 export default class DocsCommand extends ExCommand{
@@ -21,7 +21,12 @@ export default class DocsCommand extends ExCommand{
         if(!query) return
         if(!["stable","master","akairo","akairo-master"]) return
         const src = source == "akairo" ? "akairo-master" : source
-        const fetched = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json()
-        message.util?.reply({ embeds: [fetched] })
+        const json = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json() as MessageEmbedOptions
+        json.fields = json.fields?.map(field => new Object({ 
+            name: field.name, 
+            value: Util.splitMessage(field.value,{ maxLength: 1024 })[0],
+            inline: field.inline || "false"
+        }) as EmbedFieldData)
+        message.util?.reply({ embeds: [json] })
     }
 }
