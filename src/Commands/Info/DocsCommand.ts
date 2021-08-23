@@ -22,8 +22,8 @@ export default class DocsCommand extends ExCommand{
         if(!query) return
         if(!["stable","master","akairo","akairo-master"]) return
         const src = source == "akairo" ? "akairo-master" : source
-        const json = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json() as MessageEmbedOptions
-        json.fields = json.fields?.map(field => new Object({ 
+        const json = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src}&q=${encodeURIComponent(query)}`)).json() as MessageEmbedOptions || this.client.embed({ title: "Not found"},message)
+        if(json.fields?.length) json.fields = json.fields?.map(field => new Object({ 
             name: field.name, 
             value: this.client.shorten(field.value,1024),
             inline: field.inline || "false"
