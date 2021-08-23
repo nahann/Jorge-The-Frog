@@ -6,6 +6,7 @@ export default class DocsCommand extends ExCommand{
         super("docs",{
             aliases: ["docs"],
             description:"Get Discord.JS documentation",
+            flags: ["--src="],
             args: [{
                 id: "query",
                 type: "string"
