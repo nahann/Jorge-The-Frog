@@ -18,7 +18,6 @@ export default class HelpCommand extends CMD {
     async exec(message: Message, { command } : { command?: Command}) {
             const { client } = this
             const { prefix, categories } = client.commandHandler
-                const data = [];
                 const embed = client.embed({},message)
           
                 const dirEmojis = {
@@ -79,17 +78,16 @@ export default class HelpCommand extends CMD {
                   })
                   return
                 }
-          
-                data.push(`**Name:** ${command.aliases[0]}`);
+                embed.description = ""
+                embed.description += `\n**Name:** ${command.aliases[0]}`
                 if (command.aliases)
-                  data.push(`**Aliases:** ${command.aliases.slice(1).join(", ")}`);
+                embed.description += `\n**Aliases:** ${command.aliases.slice(1).join(", ")}`
                 if (command.description)
-                  data.push(`**Description:** ${command.description}`);
+                embed.description += `**Description:** ${command.description}`
                 if (command.userPermissions)
-                  data.push(`**Permissions:** ${command.userPermissions}`);
+                embed.description += `**Permissions:** ${command.userPermissions}`
 
                 embed.setAuthor(`Jorge Help Menu`);
-                embed.setDescription(data.join("\n"));
                 embed
                   .setFooter(`Syntax: [] = required, {} = optional.`)
                 message.util?.reply({

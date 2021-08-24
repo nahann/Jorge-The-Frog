@@ -28,8 +28,7 @@ export default class ContributorsCommand extends ExCommand{
               }) as EmbedFieldData
           );
       
-          const embed = this.client.embed({title: "All the contributors that are helping make Jorge awesome!",description:               "Be sure to drop a star on the repo, [here!](https://github.com/nahann/Jorge-The-Frog)"},message)
-            .addFields(contributors)
+          const embed = this.client.embed({title: "All the contributors that are helping make Jorge awesome!",description:               "Be sure to drop a star on the repo, [here!](https://github.com/nahann/Jorge-The-Frog)",fields: contributors},message)
       
           message.util?.reply({ embeds: [embed] });
     }

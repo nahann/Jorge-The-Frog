@@ -11,7 +11,7 @@ export default class BotInfoCommand extends Command{
     exec(message: Message){
         const { client } = this
         let memberc = 0;
-        client.guilds.cache.forEach((guild) => (memberc += guild.memberCount));
+        client.guilds.cache.map((guild) => (memberc += guild.memberCount));
         const embed = client.embed({},message)
           .setAuthor(`Jorge Bot Info`, client.user?.displayAvatarURL())
           .addFields(
@@ -28,7 +28,7 @@ export default class BotInfoCommand extends Command{
             {
               name: `Uptime <:uptime:854464688490020875>`,
               value: `\`\`\`${ms(client.uptime as number, { long: true })}\`\`\``,
-              //   inline: true
+              inline: true
             },
             {
               name: `Users <:users:854458687547899934>`,
