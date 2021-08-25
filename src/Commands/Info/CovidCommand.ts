@@ -17,7 +17,7 @@ export default class CovidCommand extends ExCommand{
         type notfound = { message: string }
         let json = await (await fetch(`https://disease.sh/v3/covid-19/countries/${encodeURIComponent(country)}`)).json() as Covid | notfound
         function format(n:number){
-            return n.toString().split("").reverse().join("").match(new RegExp('.{1,' + 3 + '}', 'g'))?.reverse().join(",") as string
+            return n.toString().split("").reverse().join("").match(new RegExp('.{1,' + 3 + '}', 'g'))?.reverse().map(n => n.split("").reverse().join("")).join(",") as string
         }
         function fixDown(n: number,digits: number) {
             var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
