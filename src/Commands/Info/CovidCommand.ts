@@ -19,6 +19,11 @@ export default class CovidCommand extends ExCommand{
         function format(n:number){
             return n.toString().split("").reverse().join("").match(new RegExp('.{1,' + 3 + '}', 'g'))?.reverse().join(",") as string
         }
+        function fixDown(n: number,digits: number) {
+            var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+                m = n.toString().match(re);
+            return m ? parseFloat(m[1]) : n.valueOf();
+        };
         if((json as notfound).message == "Country not found or doesn't have any cases") return message.reply("Country not found")
         json = json as Covid
         const embeds = [
@@ -66,7 +71,7 @@ export default class CovidCommand extends ExCommand{
                     inline: true
                 },{
                     name: "Active population percentage",
-                    value: `${(json.active / json.population) * 100}%`,
+                    value: `${fixDown((json.active / json.population) * 100,2)}%`,
                     inline: true
                 }]
             },message).setFooter(`Last updated at ${new Date(json.updated).toLocaleString()}`).setThumbnail(json.countryInfo.flag)
