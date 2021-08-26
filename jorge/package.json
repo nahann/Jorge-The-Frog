@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "watch": "tsc -w",
+    "watch": "npx tsc -w",
     "dev": "nodemon dist/index.js",
-    "start": "rm -rf dist && tsc && node dist/index.js",
-    "build": "tsc"
+    "start": "rm -rf dist && npx tsc && node dist/index.js",
+    "build": "npx tsc"
   },
   "dependencies": {
     "consola": "^2.15.3",
