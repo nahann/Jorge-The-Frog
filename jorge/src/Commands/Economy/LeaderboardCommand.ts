@@ -17,7 +17,7 @@ export default class LeaderBoardCommand extends ExCommand{
               {
                 fields: [
                   {
-                    name: "⠀",
+                    name: "\u200b",
                     value:
                       "This displays the users with the most money in their wallets.",
                   },

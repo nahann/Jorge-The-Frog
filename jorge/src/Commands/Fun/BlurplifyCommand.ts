@@ -1,4 +1,4 @@
-import { Message, TextChannel } from "discord.js";
+import { Message } from "discord.js";
 import ExCommand from "../../Struct/Command";
 import fetch from "node-fetch";
 export default class BlurplifyCommand extends ExCommand{

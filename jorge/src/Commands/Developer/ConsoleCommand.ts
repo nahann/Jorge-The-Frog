@@ -1,4 +1,4 @@
-import { Message, Util } from "discord.js";
+import { Message } from "discord.js";
 import Command from "../../Struct/Command";
 import { exec } from "child_process"
 export default class ConsoleCommand extends Command{

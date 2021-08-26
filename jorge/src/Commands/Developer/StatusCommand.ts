@@ -1,5 +1,4 @@
 import { Message, ActivityType } from "discord.js";
-import { ActivityTypes } from "discord.js/typings/enums";
 import Command from "../../Struct/Command";
 export default class StatusCommand extends Command{
     constructor(){

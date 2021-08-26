@@ -12,9 +12,8 @@ export default class Client extends AkairoClient {
         directory: path.join(__dirname,"..","Commands"),
         prefix: async msg => {
             // @ts-ignore
-            let { prefix } = await GuildConfigs.findOne({ guildId: msg.guild.id })
-            if(!prefix) prefix = [';', ':'];
-            return prefix 
+            return (await GuildConfigs.findOne({ guildId: msg.guild.id })).prefix ||  [';', ':']
+            
         },
         automateCategories: true,
         handleEdits: true,
