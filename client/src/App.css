@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+.custom-shape-divider-top-1625674818 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1625674818 svg {
+  position: relative;
+  display: block;
+  width: calc(127% + 1.3px);
+  height: 232px;
+}
+
+.custom-shape-divider-top-1625674818 .shape-fill {
+  /* fill: #282c34; */
+  fill: #ff7e06;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #fce195;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2.6vmin);
+  color: black;
+}
+.App-form {
+  background-color: #fce195;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2.6vmin);
+  color: black;
+}
+.shibaText {
+  color: black;
+  font-size: calc(22px + 2.6vmin);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
