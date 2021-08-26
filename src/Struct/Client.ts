@@ -5,16 +5,10 @@ import * as path from "path"
 import { Database } from "zapmongo"
 import { Config } from "../Config"
 import consola,{Consola} from "consola"
-import { GuildConfigs } from '../Database/Schemas'
- 
 export default class Client extends AkairoClient {
     commandHandler: CommandHandler = new CommandHandler(this, {
         directory: path.join(__dirname,"..","Commands"),
-        prefix: async msg => {
-            // @ts-ignore
-            return (await GuildConfigs.findOne({ guildId: msg.guild.id })).prefix ||  [';', ':']
-            
-        },
+        prefix: [";",":"],
         automateCategories: true,
         handleEdits: true,
         commandUtil: true,
