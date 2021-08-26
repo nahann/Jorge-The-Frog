@@ -32,7 +32,8 @@ export default class HelpCommand extends CMD {
 
                    const menu = new MessageSelectMenu().setCustomId("helpmenu").addOptions({
                      label: "Main",
-                     value: "main"
+                     value: "main",
+                     default: true
                    })
                    categories.map(cat => menu.addOptions({
                      label: cat.id,
