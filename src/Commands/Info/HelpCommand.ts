@@ -42,7 +42,12 @@ export default class HelpCommand extends CMD {
                    const row = new MessageActionRow().addComponents(menu)
                     embed
                     .setAuthor(`Jorge Command List`, message.author.displayAvatarURL())
-                    .setDescription(`Choose a category in the select menu. Note that this only works for 30 seconds.\nOptions:\n ${categories.map( cat => `${dirEmojis[cat.id as keyof typeof dirEmojis]} ${cat.id}` ).join("\n")}`)
+                    .setDescription(categories.map(
+                      (category, name) =>
+                        `${dirEmojis[name as keyof typeof dirEmojis]} **${name}: **  ${category
+                          .map((command) => `\`${command.aliases[0]}\``)
+                          .join(", ")}`
+                    ).join("\n"))
                     .setFooter(
                       `You can send \`${prefix[Math.floor(Math.random() * prefix.length) as keyof typeof prefix]}help [command name]\` to get info on a specific command!`
                     )
@@ -54,17 +59,9 @@ export default class HelpCommand extends CMD {
                   collector.on("collect",(interaction) =>{
                     if(!interaction.isSelectMenu()) return
                     interaction.deferReply({ ephemeral: true })
-                    if(interaction.values[0] !== "main"){
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
-                    }else{
-                      embed.setDescription(categories.map(
-                        (category, name) =>
-                          `${dirEmojis[name as keyof typeof dirEmojis]} **${name}: **  ${category
-                            .map((command) => `\`${command.aliases[0]}\``)
-                            .join(", ")}`
-                      ).join("\n"))
-                    }
+                    
                     msg.edit({
                       embeds: [embed],
                       components: [row]
