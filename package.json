@@ -2,7 +2,7 @@
   "scripts": {
     "watch": "npx tsc -w",
     "dev": "nodemon dist/index.js",
-    "start": "yarn install && rm -rf dist && yarn build && node dist/index.js",
+    "start": "yarn && rm -rf dist && yarn build && node dist/index.js",
     "build": "npx tsc",
     "i-all": "yarn"
   },
