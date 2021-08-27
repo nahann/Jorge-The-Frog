@@ -8,5 +8,6 @@ export default {
     .toJSON(),
     run: async(client: Client,interaction: CommandInteraction)=>{
         interaction.reply("Pong")
-    } 
+    },
+    guild: true 
 }
