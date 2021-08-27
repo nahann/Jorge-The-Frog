@@ -54,6 +54,11 @@ export default class Client extends AkairoClient {
                     default: false,
                   },
                 },
+              },{
+                  name: "chatbot",
+                  data: {
+                      channelId: String
+                  }
               }]
         })
         this.commandHandler.useListenerHandler(this.listenerHandler)
