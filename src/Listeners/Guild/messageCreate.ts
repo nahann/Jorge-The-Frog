@@ -14,7 +14,7 @@ export default class MessageCreateEvent extends Listener{
         const { db } = this.client
         const schema = await db.load("chatbot")
         if(schema.findOne({ channelId: message.channel.id })){
-            message.util.reply(await chat(message.content))
+            message.util?.reply(await chat(message.content))
         }
     }
 }
