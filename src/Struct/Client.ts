@@ -1,9 +1,11 @@
-import { AkairoClient, CommandHandler, ListenerHandler, InhibitorHandler } from 'discord-akairo'
+import { AkairoClient, CommandHandler, ListenerHandler } from 'discord-akairo'
 import { embed } from '../Functions/Embed'
 import { EmbedFunction } from '../../types'
 import * as path from "path"
+import { readdirSync } from 'fs'
 import { Database } from "zapmongo"
 import { Config } from "../Config"
+import {Collection} from 'discord.js'
 import consola,{Consola} from "consola"
 export default class Client extends AkairoClient {
     commandHandler: CommandHandler = new CommandHandler(this, {
@@ -19,11 +21,12 @@ export default class Client extends AkairoClient {
         directory: path.join(__dirname,"..","Listeners"),
         automateCategories: true
     });
-    console: Consola
+    console: Consola = consola
     db: Database 
     //inhibitorHandler: InhibitorHandler;
     embed: EmbedFunction
     config: any
+    slashes: Collection<string,any> = new Collection()
     constructor() {
         super({
             ownerID: ['243845797643419658', '520797108257816586','705843647287132200', '447680195604774922']
@@ -57,12 +60,12 @@ export default class Client extends AkairoClient {
               },{
                   name: "chatbot",
                   data: {
+
                       channelId: String
                   }
               }]
         })
         this.commandHandler.useListenerHandler(this.listenerHandler)
-        this.console = consola
         this.listenerHandler.setEmitters({
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler
@@ -80,6 +83,10 @@ export default class Client extends AkairoClient {
     start(){
         this.commandHandler.loadAll()
         this.listenerHandler.loadAll()
+        readdirSync(path.join(__dirname,"..","SlashCommands")).map(async c =>{
+            const file = (await import(path.join(__dirname,"..","SlashCommands",c))).default
+            this.slashes.set(file.name,file)
+        })
         //this.inhibitorHandler.loadAll()
         this.login(this.config.Token)
     }
