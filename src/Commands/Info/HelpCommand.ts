@@ -81,9 +81,9 @@ export default class HelpCommand extends CMD {
                 if (command.aliases?.length > 1)
                 embed.description += `\n**Aliases:** ${command.aliases?.slice(1).join(", ") || "None"}`
                 if (command.description)
-                embed.description += `**Description:** ${command.description}`
+                embed.description += `\n**Description:** ${command.description}`
                 if (command.userPermissions)
-                embed.description += `**Permissions:** ${command.userPermissions}`
+                embed.description += `\n**Permissions:** ${command.userPermissions}`
 
                 embed.setAuthor(`Jorge Help Menu`);
                 embed
