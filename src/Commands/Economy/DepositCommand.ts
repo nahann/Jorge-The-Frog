@@ -5,9 +5,10 @@ export default class DepCommand extends ExCommand{
         super("deposit",{
             aliases: ["dep","deposit"],
             args:[{
-                id: "num",
-                type: "number"
-            }]
+              id: "num",
+              type: "number",
+              default: "5"
+          }]
         })
     }
     async exec(message: Message,{ num }: { num: number}){

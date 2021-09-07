@@ -6,7 +6,8 @@ export default class WithDrawCommand extends ExCommand{
             aliases: ["withdraw","with"],
             args:[{
                 id: "num",
-                type: "number"
+                type: "number",
+                default: "5"
             }]
         })
     }
