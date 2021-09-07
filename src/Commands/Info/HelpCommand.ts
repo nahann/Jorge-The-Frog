@@ -78,8 +78,8 @@ export default class HelpCommand extends CMD {
                 }
                 embed.description = ""
                 embed.description += `\n**Name:** ${command.aliases[0]}`
-                if (command.aliases?.length)
-                embed.description += `\n**Aliases:** ${command.aliases?.slice(1).join(", ")}`
+                if (command.aliases?.length > 1)
+                embed.description += `\n**Aliases:** ${command.aliases?.slice(1).join(", ") || "None"}`
                 if (command.description)
                 embed.description += `**Description:** ${command.description}`
                 if (command.userPermissions)
