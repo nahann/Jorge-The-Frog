@@ -8,7 +8,8 @@ export default class SayCommand extends ExCommand{
             args: [{
                 id: "msg",
                 type: "string",
-                default: "hi"
+                default: "hi",
+                match: "rest"
             }]
         })
     }

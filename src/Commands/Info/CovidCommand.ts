@@ -9,7 +9,8 @@ export default class CovidCommand extends ExCommand{
             description: "Get covid stats of a country",
             args: [{
                 id: "country",
-                type: "STRING"
+                type: "STRING",
+                match: "rest"
             }]
         })
     }
