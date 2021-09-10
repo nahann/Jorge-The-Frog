@@ -7,7 +7,6 @@
     "i-all": "yarn"
   },
   "dependencies": {
-    "cleverbot-free": "^1.1.6",
     "consola": "^2.15.3",
     "discord-akairo": "discord-akairo/discord-akairo",
     "discord.js": "^13.1.0",

@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import Listener from "../../Struct/Listener";
-import chat from "cleverbot-free"
+import fetch from "node-fetch"
 export default class MessageCreateEvent extends Listener{
     constructor() {
         super('messageCreate', {
@@ -14,7 +14,8 @@ export default class MessageCreateEvent extends Listener{
         const { db } = this.client
         const schema = await db.load("chatbot")
         if(await schema.findOne({ channelId: message.channel.id })){
-            message.util?.reply(await chat(message.content))
+            const fetched = await (await fetch(`http://api.brainshop.ai/get?bid=${this.client.config.BID}&key=${this.client.config.Chatbot}&uid=159434&msg=${message.content}`)).json()
+            message.util?.reply(fetched.cnt)
         }
     }
 }

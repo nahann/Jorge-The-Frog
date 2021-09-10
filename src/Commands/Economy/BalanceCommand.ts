@@ -6,7 +6,7 @@ export default class BalanceCommand extends ExCommand{
             aliases: ["bal","balance"],
             args:[{
                 id: "mention",
-                type: "memberMention"
+                type: "userMention"
             }]
         })
     }
