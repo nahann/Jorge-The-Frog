@@ -20,7 +20,7 @@ export default class YoutubeCommand extends ExCommand{
     }
     async exec(message: Message,{ query }: { query: string }){
         const str = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${this.client.config.Youtube}&maxResults=1&type=channel`
-        let { items: [{ snippet: { channelId } }] } = await (await fetch(str)).json() as Youtube
+        let channelId = (await (await fetch(str)).json() as Youtube).items[0]?.snippet?.channelId
         if(!channelId) {
             if(/^(https?:\/\/)/i.test(query)) channelId = query.slice('https://youtube.com/channel/'.length)
             if(!channelId) return message.reply("Not found")
