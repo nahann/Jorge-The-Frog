@@ -23,7 +23,9 @@ export default class YoutubeCommand extends ExCommand{
         let { items: [{ snippet: { channelId } }] } = await (await fetch(str)).json() as Youtube
         if(!channelId) {
             if(/^(https?:\/\/)/i.test(query)) channelId = query.slice('https://youtube.com/channel/'.length)
+            if(!channelId) return message.reply("Not found")
         }
+        console.log(channelId)
         const { items: [{ snippet,statistics }] } = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,contentDetails,statistics,brandingSettings&id=${channelId}&key=${this.client.config.Youtube}`)).json() as Youtube2
         function format(n:number){
             return n.toString().split("").reverse().join("").match(new RegExp('.{1,' + 3 + '}', 'g'))?.reverse().map(n => n.split("").reverse().join("")).join(",") as string
