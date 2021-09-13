@@ -11,8 +11,10 @@ export default class YoutubeCommand extends ExCommand{
             args:[{
                 id: "query",
                 type: "STRING",
-                match: "rest"
-            }]
+                match: "rest",
+                default: "Salvage_Dev"
+            }],
+            typing: true
         })
     }
     async exec(message: Message,{ query }: { query: string }){
