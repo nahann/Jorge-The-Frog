@@ -9,8 +9,9 @@ export default class SearchCommand extends Command{
             description: "Search for anything(except nsfw stuff) on google",
             args: [{
                 id: "query",
-                type: "string",
-                default: "google.com"
+                type: "STRING",
+                default: "google.com",
+                match: "rest"
             }]
         })
     }

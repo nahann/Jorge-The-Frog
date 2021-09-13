@@ -1,4 +1,4 @@
-import { MessageEmbed, MessageEmbedOptions,Message } from "discord.js"
+import { MessageEmbed } from "discord.js"
 import { EmbedFunction } from "../../types"
 
 export const embed: EmbedFunction = (data, { author }) => {
