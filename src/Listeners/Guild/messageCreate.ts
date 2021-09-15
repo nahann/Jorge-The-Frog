@@ -14,7 +14,7 @@ export default class MessageCreateEvent extends Listener{
         const { db } = this.client
         const schema = await db.load("chatbot")
         if(await schema.findOne({ channelId: message.channel.id })){
-            const fetched = await (await fetch(`http://api.brainshop.ai/get?bid=${this.client.config.BID}&key=${this.client.config.Chatbot}&uid=159434&msg=${message.content}`)).json()
+            const fetched = await (await fetch(`http://api.brainshop.ai/get?bid=${this.client.config.BID}&key=${this.client.config.Chatbot}&uid=159434&msg=${encodeURIComponent(message.content)}`)).json()
             message.util?.reply(fetched.cnt)
         }
     }

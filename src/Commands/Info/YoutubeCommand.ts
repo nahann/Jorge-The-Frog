@@ -19,14 +19,13 @@ export default class YoutubeCommand extends ExCommand{
         })
     }
     async exec(message: Message,{ query }: { query: string }){
-        const str = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${this.client.config.Youtube}&maxResults=1&type=channel`
+        const str = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&key=${this.client.config.Youtube}&maxResults=1&type=channel`
         let item = (await (await fetch(str)).json() as Youtube).items[0]
         let channelId = item?.snippet?.channelId
         if(!item) {
             if(/^(https?:\/\/)/i.test(query)) channelId = query.slice('https://youtube.com/channel/'.length)
             if(!channelId) return message.reply("Not found")
         }
-        console.log(channelId)
         const { items: [{ snippet,statistics }] } = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,contentDetails,statistics,brandingSettings&id=${channelId}&key=${this.client.config.Youtube}`)).json() as Youtube2
         function format(n:number){
             return n.toString().split("").reverse().join("").match(new RegExp('.{1,' + 3 + '}', 'g'))?.reverse().map(n => n.split("").reverse().join("")).join(",") as string
