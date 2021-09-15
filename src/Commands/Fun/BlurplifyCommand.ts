@@ -1,6 +1,7 @@
 import { Message } from "discord.js";
 import ExCommand from "../../Struct/Command";
 import fetch from "node-fetch";
+import { URL } from "url";
 export default class BlurplifyCommand extends ExCommand{
     constructor(){
         super("blurple",{
