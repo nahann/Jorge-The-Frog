@@ -15,8 +15,8 @@ export default class ChatbotCommand extends ExCommand{
     async exec(message: Message,{ channel }: { channel: TextChannel }){
         if(!channel) return
         const { db } = this.client
-        const schema = await db.load("chatbot")
-        await schema.create({ channelId: channel.id })
+        const schema = await db.load("config")
+        await schema.create({ chatbot: channel.id, guildId: message.guild?.id })
         message.util?.reply(`Set the chatbot channel to ${channel.toString()}`)
     }
 }

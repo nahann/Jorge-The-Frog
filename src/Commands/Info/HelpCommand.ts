@@ -25,7 +25,8 @@ export default class HelpCommand extends CMD {
                   Fun: "<:fun:854470205978443789>",
                   Info: "<:info:854469078433792020>",
                   Moderation: "<:mod:854469924088446996>",
-                  Economy: "<:ec:854466932551450644>"
+                  Economy: "<:ec:854466932551450644>",
+                  Config: "<:config:854469436306882592>"
                 };
           
                 if (!command) {

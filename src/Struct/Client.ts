@@ -58,10 +58,11 @@ export default class Client extends AkairoClient {
                   },
                 },
               },{
-                  name: "chatbot",
+                  name: "config",
                   data: {
-
-                      channelId: String
+                      guildId: String,
+                      chatbot: String,
+                      welcome: String
                   }
               }]
         })
