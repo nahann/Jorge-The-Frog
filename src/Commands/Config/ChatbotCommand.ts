@@ -12,10 +12,17 @@ export default class ChatbotCommand extends ExCommand{
             userPermissions: "MANAGE_GUILD"
         })
     }
-    async exec(message: Message,{ channel }: { channel: TextChannel }){
-        if(!channel) return
+    async exec(message: Message,{ channel }: { channel?: TextChannel }){
         const { db } = this.client
         const schema = await db.load("config")
+        if(!channel){
+            const doc = (await schema.findOne({ guildId: message.guild?.id }))?.chatbot
+            if(doc){
+                schema.update({ guildId: message.guild?.id },{ chatbot: null })
+                return message.util?.reply("Removed chatbot channel")
+            }
+            else return
+        }
         await schema.create({ chatbot: channel.id, guildId: message.guild?.id })
         message.util?.reply(`Set the chatbot channel to ${channel.toString()}`)
     }
