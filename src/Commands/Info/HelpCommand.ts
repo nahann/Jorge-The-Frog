@@ -63,7 +63,7 @@ export default class HelpCommand extends CMD {
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
                     
-                    msg.reply({
+                    msg.edit({
                       embeds: [embed],
                       components: [row]
                     })
