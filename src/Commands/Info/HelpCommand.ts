@@ -61,7 +61,7 @@ export default class HelpCommand extends CMD {
                     if(!interaction.isSelectMenu()) return
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
-                    interaction.reply("Selection seen. Don't complain about this message, discord is a dick and doesn't let us just not reply to interactions. look at the help message to see your selection, not here.")                    
+                    interaction.reply({ content: "Selection seen. Don't complain about this message, discord is a dick and doesn't let us just not reply to interactions. look at the help message to see your selection, not here.",ephemeral:true})                    
                     msg.edit({
                       embeds: [embed],
                       components: [row]
