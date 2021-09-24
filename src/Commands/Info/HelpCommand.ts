@@ -63,10 +63,11 @@ export default class HelpCommand extends CMD {
                     const category = categories.get(interaction.values[0])
                     embed.setDescription(category?.map(cmd => `\`${cmd.aliases[0]}\``).join(", ") as string).setTitle(`${dirEmojis[category?.id as keyof typeof dirEmojis]} ${category?.id}`)
                     
-                    msg.edit({
+                    msg.reply({
                       embeds: [embed],
                       components: [row]
                     })
+                    interaction.editReply("Selection seen. Don't complain about this message, discord is a dick and doesn't let us just not reply to interactions. look at the help message to see your selection, not here.")
                   })
                   collector.on("end",(collected)=>{
                     embed.setFooter("Expired")
