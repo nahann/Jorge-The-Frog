@@ -12,7 +12,8 @@ export default class SpotifyCommand extends ExCommand{
         })
     }
     async exec(message: Message, { member }: { member?: GuildMember }){
-        const presence = (member || message.member as GuildMember).presence?.activities.find(activity => activity.name.toLowerCase() == "spotify")
+        member = member || message.member as GuildMember
+        const presence = member.presence?.activities.find(activity => activity.name.toLowerCase() == "spotify")
         if(!presence) return message.util?.reply({
             embeds: [
                 this.client.embed({
