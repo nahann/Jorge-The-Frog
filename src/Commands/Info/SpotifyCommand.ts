@@ -22,12 +22,13 @@ export default class SpotifyCommand extends ExCommand{
             ]
         })
         const url = `https://i.scdn.co/image/${presence.assets?.largeImage?.slice(8)}`
+        console.log(presence)
         message.util?.reply({
             embeds: [
                 this.client.embed({
                     title: presence.details as string,
-                    description: `by ${presence.state} on ${presence.assets?.largeText || "Unknown"}`,
-                    thumbnail: { url }
+                    description: `by **${presence.state}** on **${presence.assets?.largeText || "Unknown"}**`,
+                    image: { url }
                 },message)
             ]
         })
