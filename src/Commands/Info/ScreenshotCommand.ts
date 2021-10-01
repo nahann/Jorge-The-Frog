@@ -14,6 +14,6 @@ export default class ScreenshotCommand extends ExCommand{
         })
     }
     async exec(message:Message,{ query }: { query: string }){
-        return message.reply(await Screenshot(query) || { content: "NSFW Link xd" })
+        return message.util?.reply(await Screenshot(query) || { content: "NSFW Link xd" })
     }
 }

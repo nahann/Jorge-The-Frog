@@ -24,7 +24,7 @@ export default class YoutubeCommand extends ExCommand{
         let channelId = item?.snippet?.channelId
         if(!item) {
             if(/^(https?:\/\/)/i.test(query)) channelId = query.slice('https://youtube.com/channel/'.length)
-            if(!channelId) return message.reply("Not found")
+            if(!channelId) return message.util?.reply("Not found")
         }
         const { items: [{ snippet,statistics }] } = await (await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,contentDetails,statistics,brandingSettings&id=${channelId}&key=${this.client.config.Youtube}`)).json() as Youtube2
         function format(n:number){
@@ -40,6 +40,6 @@ export default class YoutubeCommand extends ExCommand{
         .addField("Upload count",format(parseInt(statistics.videoCount)),true)
         .addField("Subscriber count",statistics.hiddenSubscriberCount ? "Hidden" : format(parseInt(statistics.subscriberCount) ),true)
         .setImage('attachment://Screenshot.png')
-        message.reply({ embeds: [embed], ...await Screenshot(`https://youtube.com/channel/${channelId}`) })
+        message.util?.reply({ embeds: [embed], ...await Screenshot(`https://youtube.com/channel/${channelId}`) })
     }
 }

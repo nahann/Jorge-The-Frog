@@ -25,7 +25,7 @@ export default class CovidCommand extends ExCommand{
                 m = n.toString().match(re);
             return m ? parseFloat(m[1]) : n.valueOf();
         };
-        if((json as notfound).message == "Country not found or doesn't have any cases") return message.reply("Country not found")
+        if((json as notfound).message == "Country not found or doesn't have any cases") return message.util?.reply("Country not found")
         json = json as Covid
         const embeds = [
             this.client.embed({
@@ -77,6 +77,6 @@ export default class CovidCommand extends ExCommand{
                 }]
             },message).setFooter(`Last updated at ${new Date(json.updated).toLocaleString()}`).setThumbnail(json.countryInfo.flag)
         ]
-        message.reply({ embeds })
+        message.util?.reply({ embeds })
     }
 }

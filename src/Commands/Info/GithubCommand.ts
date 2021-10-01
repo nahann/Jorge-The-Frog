@@ -16,9 +16,9 @@ export default class GithubCommand extends ExCommand{
     }
     async exec(message: Message,{ repo }: { repo: string}){
         type err = { message: string, documentation_url: string }
-        if(!repo.includes("/") || repo.split("/").length < 2) return message.reply("The correct format is username/repo")
+        if(!repo.includes("/") || repo.split("/").length < 2) return message.util?.reply("The correct format is username/repo")
         const fetched = await (await fetch(`https://api.github.com/repos/${repo}`)).json() as err | GithubRepo
-        if((fetched as err).message) return message.reply((fetched as err).message)
+        if((fetched as err).message) return message.util?.reply((fetched as err).message)
         const repository = fetched as GithubRepo
         const embeds = [
             this.client.embed({
@@ -27,6 +27,6 @@ export default class GithubCommand extends ExCommand{
                 description: repository.description || "No description provided."
             },message).addField("Created at",new Date(repository.created_at).toString(),true).addField("Updated at",new Date(repository.updated_at).toString(),true).addField("Star Gazer count",repository.stargazers_count.toString(),true).addField("Watcher count",repository.watchers_count.toString(),true).addField("Forks count",repository.forks_count.toString(),true).addField("Language",repository.language,true).addField("Has issues?",repository.has_issues ? "Yes" : "No",true).addField("Has downloads?",repository.has_downloads ? "Yes" : "No",true).addField("Archived?",repository.archived ? "Yes" : "No",true).addField("Disabled",repository.disabled ? "Yes" : "No",true)
         ]
-        message.reply({ embeds })
+        message.util?.reply({ embeds })
     }
 }
