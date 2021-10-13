@@ -15,7 +15,7 @@ export default class RedditCommand extends ExCommand{
     async exec(message: Message,{ subreddit }: { subreddit: string }){
         if(subreddit == "dankmemes") return message.util?.reply("You can use `;meme` to get a meme!")
         if(subreddit == "jokes") return message.util?.reply("You can use `;joke` to get a joke!")
-        const post = await reddit(subreddit)
+        const post = await reddit(subreddit).catch((e: Error) => message.util?.reply("An error occured."))
         if(post.message) return message.util?.reply(post.message)
         const embed = this.client.embed({url: post.url},message)
         if(post.title) embed.title = post.title
