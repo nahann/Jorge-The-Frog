@@ -10,9 +10,8 @@ export const reddit: RedditFunction = async(query)=>{
     if(pst.constructor == Array){
         post = pst[Math.floor(Math.random() * pst.length)]
     }
-    console.log(pst)
     if(post.data.children[0].data.over_18) return { message: "NSFW not allowed" }
     if(post.error) return post
-    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, url_overridden_by_dest: img, permalink, author } = post.data.children[0].data
+    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, url_overridden_by_dest: img, permalink, author } = post.data.children[Math.floor(Math.random() * post.data.children.length)].data
     return { title, description, upvote_ratio, upvotes, downvotes, img, url: `https://reddit.com${permalink}`, author }
 }
