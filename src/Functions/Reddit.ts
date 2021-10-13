@@ -5,10 +5,10 @@ import fetch from "node-fetch"
 export const reddit: RedditFunction = async(query)=>{
     const subreddit: Subreddit = await (await fetch(`https://reddit.com/r/${query}.json`)).json()
     if(!subreddit.data?.children?.length) return { message: "Not found", error: 404 }
-    const pst: Reddit | Reddit[] = (await (await fetch(`https://reddit.com/r/${query}/random.json`)).json())
+    const pst: Reddit | Reddit[] = (await (await fetch(`https://reddit.com/r/${query}/top.json`)).json())
     let post = pst as Reddit
     if(pst.constructor == Array){
-        post = pst[0]
+        post = pst[Math.floor(Math.random() * pst.length)]
     }
     console.log(pst)
     if(post.data.children[0].data.over_18) return { message: "NSFW not allowed" }
