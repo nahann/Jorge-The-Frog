@@ -54,7 +54,7 @@ export default class BotInfoCommand extends Command{
           new MessageButton()
             .setLabel("Invite")
             .setURL(
-             client.generateInvite({ permissions: ["ADMINISTRATOR"],scopes: ["applications.commands"]})
+             client.generateInvite({ permissions: ["ADMINISTRATOR"],scopes: ["applications.commands","bot"]})
             )
             .setStyle("LINK")
             .setEmoji("<:support:854951274423910410>"),
