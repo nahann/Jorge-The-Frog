@@ -1,5 +1,5 @@
 import ExCommand from "../../Struct/Command";
-import { advanced } from "imageapi.js";
+import { reddit } from "../../Functions/Reddit";
 import { Message } from "discord.js";
 export default class MemeCommand extends ExCommand{
     constructor(){
@@ -9,13 +9,14 @@ export default class MemeCommand extends ExCommand{
         })
     }
     async exec(message: Message){
-        const { title, img: url} = await advanced("dankmemes","top")
+        const { title, img, url,upvote_ratio,author } = await reddit("dankmemes")
         message.util?.reply({
             embeds:[
                 this.client.embed({
                     title,
                     url,
-                    image: { url }
+                    image: { url: img },
+                    footer: { text: `By ${author}, ${upvote_ratio} upvote ratio` }
                 },message)
             ]
         })

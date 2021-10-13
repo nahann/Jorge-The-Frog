@@ -3,3 +3,5 @@ import { Message, MessageEmbed, MessageEmbedOptions, User, MessageOptions } from
 export type EmbedFunction = (data: MessageEmbedOptions, { author: User }) => MessageEmbed
 
 export type ScreenshotFunction = (site: string) => Promise<MessageOptions | null>
+
+export type RedditFunction = (subreddit: string) => any
