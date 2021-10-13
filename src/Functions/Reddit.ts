@@ -13,6 +13,6 @@ export const reddit: RedditFunction = async(query)=>{
     console.log(pst)
     if(post.data.children[0].data.over_18) return { message: "NSFW not allowed" }
     if(post.error) return post
-    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, url_overridden_by_dest: img, url, author } = post.data.children[0].data
-    return { title, description, upvote_ratio, upvotes, downvotes, img, url, author }
+    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, url_overridden_by_dest: img, permalink, author } = post.data.children[0].data
+    return { title, description, upvote_ratio, upvotes, downvotes, img, url: `https://reddit.com${permalink}`, author }
 }
