@@ -9,6 +9,6 @@ export const reddit: RedditFunction = async(query)=>{
     if(subreddit.data.children[0].data.over_18) return { message: "NSFW not allowed" }
     const pst: Reddit = (await (await fetch(`https://reddit.com/r/${query}/random.json`)).json())[0]
     if(pst.error) return pst
-    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, thumbnail: img,url, author } = pst.data.children[0].data
+    const { title, selftext: description,ups: upvotes,downs: downvotes, upvote_ratio, url_overridden_by_dest: img, url, author } = pst.data.children[0].data
     return { title, description, upvote_ratio, upvotes, downvotes, img, url, author }
 }
