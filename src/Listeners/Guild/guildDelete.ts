@@ -9,6 +9,7 @@ export default class GuildDeleteEvent extends Listener{
     }
 
     async exec(guild: Guild) {
+        console.log(guild)
         const main = this.client.guilds.cache.get("849131192275566613") as Guild
         (main.channels.cache.get("854479020028723210") as TextChannel).send({
             embeds: [
