@@ -21,7 +21,7 @@ export default class EvalCommand extends Command{
         .replace(new RegExp("client.token","g"),"()")
         .replace(/”/g, '"')
         .replace(/“/g, '"')
-        const evaled = Util.splitMessage(await inspect(eval(cd),{depth: 0}))[0]
+        const evaled = Util.splitMessage( inspect(await eval(cd),{depth: 0}))[0]
         message.util?.reply({ embeds: [client.embed({title: "Eval success",description: `\`\`\`\n${evaled}\`\`\``},message)]})
     }
 }
