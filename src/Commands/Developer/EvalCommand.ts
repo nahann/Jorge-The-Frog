@@ -15,7 +15,7 @@ export default class EvalCommand extends Command{
             }]
         })
     }
-    exec(message: Message,{ code }: { code: string }){
+    async exec(message: Message,{ code }: { code: string }){
         const { client } = this
         const cd = code
         .replace(new RegExp("client.token","g"),"()")
