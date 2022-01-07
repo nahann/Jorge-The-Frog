@@ -9,7 +9,7 @@ export default class GuildMemberAddEvent extends Listener{
     }
     async exec(member: GuildMember){
         const schema = await this.client.db.load("config")
-        const channel = member.guild.channels.cache.get((await schema.findOne({ guildId: member.guild?.id }))?.welcome) as TextChannel
+        const channel = member.guild.channels.cache.get((await schema.findOne({ guildId: member.guild?.id }) as any)?.welcome) as TextChannel
         if(channel){
             const embeds = {
                 embeds: [
