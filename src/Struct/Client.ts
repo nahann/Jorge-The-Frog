@@ -29,8 +29,7 @@ export default class Client extends AkairoClient {
     slashes: Collection<string,any> = new Collection()
     constructor() {
         super({
-            ownerID: ['243845797643419658', '520797108257816586','705843647287132200', '447680195604774922']
-        }, {
+            ownerID: ['243845797643419658', '520797108257816586','705843647287132200', '447680195604774922'],    
             intents: 32767,
             allowedMentions: {
                 parse: ['roles', 'users'],
