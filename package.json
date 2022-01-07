@@ -26,6 +26,7 @@
   "name": "jorge",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "https://github.com/nahann/Jorge-The-Frog.git",
   "author": "Lesiiii <72552172+lesigit@users.noreply.github.com>",
   "license": "MIT"
