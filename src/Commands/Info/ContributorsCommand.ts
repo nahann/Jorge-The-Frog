@@ -1,6 +1,6 @@
 import ExCommand from "../../Struct/Command";
 import { Message,EmbedFieldData } from "discord.js"
-import fetch from "node-fetch"
+import fetch from "../../Functions/Undici";
 import { GithubUser } from "../../interfaces/github";
 export default class ContributorsCommand extends ExCommand{
     constructor(){

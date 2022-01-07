@@ -1,7 +1,7 @@
 import ExCommand from "../../Struct/Command";
 import { Message } from "discord.js"
 import { GithubRepo } from "../../interfaces/githubrepo";
-import fetch from "node-fetch";
+import fetch from "../../Functions/Undici";
 export default class GithubCommand extends ExCommand{
     constructor(){
         super("github",{

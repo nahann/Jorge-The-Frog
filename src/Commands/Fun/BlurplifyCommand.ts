@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 import ExCommand from "../../Struct/Command";
-import fetch from "node-fetch";
+import fetch from "../../Functions/Undici";
 import { URL } from "url";
 export default class BlurplifyCommand extends ExCommand{
     constructor(){

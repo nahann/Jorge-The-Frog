@@ -1,5 +1,5 @@
 import ExCommand from "../../Struct/Command";
-import fetch from "node-fetch"
+import fetch from "../../Functions/Undici";
 import { Message } from "discord.js";
 import { Npm } from "../../interfaces/npm";
 export default class NPMCommand extends ExCommand{

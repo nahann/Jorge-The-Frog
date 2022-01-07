@@ -1,8 +1,7 @@
 import ExCommand from "../../Struct/Command";
 import { Message } from "discord.js"
 import { Youtube } from "../../interfaces/youtube";
-import fetch from "node-fetch"
-import { Screenshot } from "../../Functions/Screenshot";
+import fetch from "../../Functions/Undici";
 import { Youtube2 } from "../../interfaces/youtube2";
 export default class YoutubeCommand extends ExCommand{
     constructor(){
@@ -40,6 +39,6 @@ export default class YoutubeCommand extends ExCommand{
         .addField("Upload count",format(parseInt(statistics.videoCount)),true)
         .addField("Subscriber count",statistics.hiddenSubscriberCount ? "Hidden" : format(parseInt(statistics.subscriberCount) ),true)
         .setImage('attachment://Screenshot.png')
-        message.util?.reply({ embeds: [embed], ...await Screenshot(`https://youtube.com/channel/${channelId}`) })
+        message.util?.reply({ embeds: [embed] })
     }
 }

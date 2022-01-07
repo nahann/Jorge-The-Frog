@@ -1,5 +1,5 @@
 import Command from "../../Struct/Command";
-import fetch from "node-fetch"
+import fetch from "../../Functions/Undici";
 import { Message } from "discord.js";
 import { CSEImage, Google } from "../../interfaces/google"
 export default class SearchCommand extends Command{

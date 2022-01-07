@@ -1,6 +1,6 @@
 import { Message, MessageEmbedOptions,Util,EmbedFieldData } from "discord.js";
 import ExCommand from "../../Struct/Command";
-import fetch from "node-fetch"
+import fetch from "../../Functions/Undici";
 export default class DocsCommand extends ExCommand{
     constructor(){
         super("docs",{

@@ -1,7 +1,7 @@
 import { RedditFunction } from "../../types"
 import { Reddit } from "../interfaces/reddit"
 import { Subreddit } from "../interfaces/subreddit"
-import fetch from "node-fetch"
+import fetch from "./Undici";
 export const reddit: RedditFunction = async(query)=>{
     const subreddit = await (await fetch(`https://reddit.com/r/${query}.json`)).json() as Subreddit
     if(!subreddit.data?.children?.length) return { message: "Not found", error: 404 }

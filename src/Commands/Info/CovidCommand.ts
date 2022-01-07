@@ -1,6 +1,6 @@
 import ExCommand from "../../Struct/Command";
 import { Message } from "discord.js";
-import fetch from "node-fetch";
+import fetch from "../../Functions/Undici";
 import { Covid } from "../../interfaces/covid";
 export default class CovidCommand extends ExCommand{
     constructor(){
