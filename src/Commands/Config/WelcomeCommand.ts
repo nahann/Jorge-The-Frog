@@ -16,7 +16,7 @@ export default class WelcomeCommand extends ExCommand{
         const { db } = this.client
         const schema = await db.load("config")
         if(!channel){
-            const doc = (await schema.findOne({ guildId: message.guild?.id }))?.welcome
+            const doc = (await schema.findOne({ guildId: message.guild?.id }) as any)?.welcome
             if(doc){
                 schema.update({ guildId: message.guild?.id },{ welcome: null })
                 return message.util?.reply("Removed welcome channel")

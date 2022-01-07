@@ -15,7 +15,7 @@ export default class BlurplifyCommand extends ExCommand{
     }
     async exec(message: Message,{ url }: {url?: URL}){
         const link = url?.href || message.author.displayAvatarURL({ size: 1024 })
-        const { message: msg } = await (await fetch(`https://nekobot.xyz/api/imagegen?type=blurpify&image=${link}`)).json()
+        const { message: msg } = await (await fetch(`https://nekobot.xyz/api/imagegen?type=blurpify&image=${link}`)).json() as any
         message.util?.reply({
             embeds:[
                 this.client.embed({

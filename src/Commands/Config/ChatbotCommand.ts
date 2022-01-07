@@ -16,7 +16,7 @@ export default class ChatbotCommand extends ExCommand{
         const { db } = this.client
         const schema = await db.load("config")
         if(!channel){
-            const doc = (await schema.findOne({ guildId: message.guild?.id }))?.chatbot
+            const doc = (await schema.findOne({ guildId: message.guild?.id }) as any)?.chatbot
             if(doc){
                 schema.update({ guildId: message.guild?.id },{ chatbot: null })
                 return message.util?.reply("Removed chatbot channel")
