@@ -3,9 +3,9 @@ import { Reddit } from "../interfaces/reddit"
 import { Subreddit } from "../interfaces/subreddit"
 import fetch from "node-fetch"
 export const reddit: RedditFunction = async(query)=>{
-    const subreddit: Subreddit = await (await fetch(`https://reddit.com/r/${query}.json`)).json()
+    const subreddit = await (await fetch(`https://reddit.com/r/${query}.json`)).json() as Subreddit
     if(!subreddit.data?.children?.length) return { message: "Not found", error: 404 }
-    const pst: Reddit | Reddit[] = (await (await fetch(`https://reddit.com/r/${query}/top.json?limit=60`)).json())
+    const pst = (await (await fetch(`https://reddit.com/r/${query}/top.json?limit=60`)).json()) as Reddit | Reddit[]
     let post = pst as Reddit
     if(pst.constructor == Array){
         post = pst[Math.floor(Math.random() * pst.length)]
