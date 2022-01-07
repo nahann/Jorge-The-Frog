@@ -1228,10 +1228,10 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-typescript@^4.3.5:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
-  integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
+typescript@^4.6.0-dev.20220107:
+  version "4.6.0-dev.20220107"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.0-dev.20220107.tgz#e09608e3134383b5501fc9b4a9c902eb186db802"
+  integrity sha512-U/PitU3Hvyf8/znYmodIuyUQ+66zTKloq71N+hJg7mT8oCRBuh0NOAbT2GhHwbouxIeuDfhsiNqonPyZ4bkdTA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "lib": ["ESNext"],
     "target": "ESNext", 
-    "module": "es2020",
+    "module": "node12",
     "moduleResolution": "node",
     "outDir": "./dist",                            
     "rootDir": "./src",              
