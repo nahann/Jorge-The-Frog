@@ -9,7 +9,8 @@ export default class ScreenshotCommand extends ExCommand{
             args: [{
                 id: "query",
                 type: "STRING",
-                match: "rest"
+                match: "rest",
+                default: "https://www.google.com"
             }]
         })
     }
