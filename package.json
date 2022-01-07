@@ -9,7 +9,7 @@
   "dependencies": {
     "cleverbot-free": "^1.1.7",
     "consola": "^2.15.3",
-    "discord-akairo": "^8.1.0",
+    "discord-akairo": "https://github.com/discord-akairo/discord-akairo",
     "discord.js": "^13.5.0",
     "javascript-obfuscator": "^2.19.0",
     "mongoose": "^6.1.5",

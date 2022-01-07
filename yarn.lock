@@ -381,10 +381,9 @@ denque@^2.0.1:
   resolved "https://registry.yarnpkg.com/denque/-/denque-2.0.1.tgz#bcef4c1b80dc32efe97515744f21a4229ab8934a"
   integrity sha512-tfiWc6BQLXNLpNiR5iGd0Ocu3P3VpxfzFiqubLgMfhfOw9WyvgJBd46CClNn9k3qfbjvT//0cf7AlYRX/OslMQ==
 
-discord-akairo@^8.1.0:
+"discord-akairo@https://github.com/discord-akairo/discord-akairo":
   version "8.1.0"
-  resolved "https://registry.yarnpkg.com/discord-akairo/-/discord-akairo-8.1.0.tgz#9f3d910e12c197d40d3522a3a93679e2a746a6ca"
-  integrity sha512-INWYmHo6NgyYx1ZKGSCmgznVfvkXpWGj4fGCGjO8IPkZ06Bidb9YKr4rXy2lwG0kprCjvqY0qbbhcw6N050abQ==
+  resolved "https://github.com/discord-akairo/discord-akairo#905f69382957023601ebbb6f8a3a8b6b0f615bd1"
 
 discord-api-types@^0.26.0:
   version "0.26.1"
